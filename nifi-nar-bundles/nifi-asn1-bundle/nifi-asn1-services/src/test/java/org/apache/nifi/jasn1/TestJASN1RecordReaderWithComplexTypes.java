@@ -41,6 +41,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -312,7 +313,7 @@ public class TestJASN1RecordReaderWithComplexTypes implements JASN1ReadRecordTes
             new RecordField("str", RecordFieldType.STRING.getDataType())
         ));
 
-        Map<String, Object> expectedValues = new HashMap<String, Object>() {{
+        Map<String, Object> expectedValues = new LinkedHashMap<String, Object>() {{
             put("i", BigInteger.valueOf(53286L));
             put("str", "Some UTF-8 String. こんにちは世界。");
         }};

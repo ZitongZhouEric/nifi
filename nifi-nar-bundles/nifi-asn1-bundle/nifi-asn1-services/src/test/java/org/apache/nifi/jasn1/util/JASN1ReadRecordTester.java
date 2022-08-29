@@ -69,7 +69,7 @@ public interface JASN1ReadRecordTester {
             RecordSchema expectedSchema = expectedSchemaProvider.apply(actual);
 
             assertRecordsEqual(expected, actual);
-            assertEquals(expectedSchema, actualSchema);
+            assertEquals(expectedSchema.getFieldMap(), actualSchema.getFieldMap());
         }
     }
 

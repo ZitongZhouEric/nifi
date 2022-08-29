@@ -25,6 +25,7 @@ import org.apache.nifi.serialization.record.SchemaIdentifier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -94,13 +95,18 @@ public class SimpleRecordSchema implements RecordSchema {
         return fields;
     }
 
+    @Override
+    public Map<String, RecordField> getFieldMap() {
+        return fieldMap;
+    }
+
     public void setFields(final List<RecordField> fields) {
         if (this.fields != null) {
             throw new IllegalArgumentException("Fields have already been set.");
         }
 
         this.fields = Collections.unmodifiableList(new ArrayList<>(fields));
-        this.fieldMap = new HashMap<>(fields.size() * 2);
+        this.fieldMap = new LinkedHashMap<>(fields.size() * 2);
 
         for (final RecordField field : fields) {
             RecordField previousValue = fieldMap.put(field.getFieldName(), field);

@@ -18,6 +18,7 @@
 package org.apache.nifi.serialization.record;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface RecordSchema {
@@ -38,6 +39,8 @@ public interface RecordSchema {
      * @throws IndexOutOfBoundsException if the index is < 0 or >= the number of fields (determined by {@link #getFieldCount()}).
      */
     RecordField getField(int index);
+
+    Map<String, RecordField> getFieldMap();
 
     /**
      * @return the data types of the fields

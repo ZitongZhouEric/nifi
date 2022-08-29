@@ -94,6 +94,11 @@ public class SimpleRecordSchema implements RecordSchema {
         return fields;
     }
 
+    @Override
+    public Map<String, RecordField> getFieldMap() {
+        return fieldMap;
+    }
+
     public void setFields(final List<RecordField> fields) {
         if (this.fields != null) {
             throw new IllegalArgumentException("Fields have already been set.");
